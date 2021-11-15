@@ -22,22 +22,21 @@ import './css/styles.css';
 //     );
 //   });
 // }
+
 const BASE_URL = 'http://localhost:3000';
 
 function fetchBooks() {
-  return fetch(`${BASE_URL}/books`)
-    .then(res => res.json())
-    .then(books => console.log(books)); // render function can be here
+  return fetch(`${BASE_URL}/books`).then(res => res.json());
 }
 
 function fetchBookByID(id) {
-  return fetch(`${BASE_URL}/books/${id}`)
-    .then(res => res.json())
-    .then(console.log); // render function can be here
+  return fetch(`${BASE_URL}/books/${id}`).then(res => res.json());
 }
 
-// fetchBooks();
-// fetchBookByID(3);
+// fetchBooks().then(console.log); // render function can be here
+fetchBookByID(3)
+  .then(console.log)
+  .catch(error => console.log(error));
 
 function addBook(book) {
   const options = {
@@ -45,9 +44,7 @@ function addBook(book) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(book),
   };
-  return fetch(`${BASE_URL}/books`, options)
-    .then(res => res.json())
-    .then(console.log); // render function can be here
+  return fetch(`${BASE_URL}/books`, options).then(res => res.json());
 }
 
 // addBook({
@@ -55,7 +52,7 @@ function addBook(book) {
 //   author: 'someone',
 //   genres: ['g1', 'g4'],
 //   rating: 1,
-// });
+// }).then(console.log).catch(error => console.log(error));
 
 function updateBook(id, book) {
   const options = {
@@ -63,13 +60,11 @@ function updateBook(id, book) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(book),
   };
-  return fetch(`${BASE_URL}/books/${id}`, options)
-    .then(res => res.json())
-    .then(console.log); // render function can be here
+  return fetch(`${BASE_URL}/books/${id}`, options).then(res => res.json());
 }
 
-// updateBook(4, { title: 'cool book' });
-// updateBook(5, { rating: 3 });
+// updateBook(4, { title: 'cool book' }).then(console.log).catch(error => console.log(error));
+// updateBook(5, { rating: 3 }).then(console.log).catch(error => console.log(error));
 
 function removeBook(id) {
   const options = {
@@ -78,4 +73,4 @@ function removeBook(id) {
   return fetch(`${BASE_URL}/books/${id}`, options).then(res => res.json());
 }
 
-// removeBook(9);
+// removeBook(9).catch(error => console.log(error));
