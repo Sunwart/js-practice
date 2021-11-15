@@ -1,0 +1,83 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "T1",
+      "author": "A1",
+      "genres": [
+        "g1"
+      ],
+      "rating": 9.2
+    },
+    {
+      "id": 2,
+      "title": "T2",
+      "author": "A2",
+      "genres": [
+        "g1",
+        "g2"
+      ],
+      "rating": 8.7
+    },
+    {
+      "id": 3,
+      "title": "T3",
+      "author": "A3",
+      "genres": [
+        "g2",
+        "g3"
+      ],
+      "rating": 9.5
+    },
+    {
+      "id": 4,
+      "title": "cool book",
+      "author": "A4",
+      "genres": [
+        "g3",
+        "g4"
+      ],
+      "rating": 7.3
+    },
+    {
+      "id": 5,
+      "title": "T5",
+      "author": "A5",
+      "genres": [
+        "g4"
+      ],
+      "rating": 3
+    },
+    {
+      "id": 6,
+      "title": "T6",
+      "author": "A6",
+      "genres": [
+        "g2",
+        "g3"
+      ],
+      "rating": 9.2
+    },
+    {
+      "id": 7,
+      "title": "T7",
+      "author": "A7",
+      "genres": [
+        "g1",
+        "g4"
+      ],
+      "rating": 7
+    },
+    {
+      "title": "WOW-book",
+      "author": "Me",
+      "genres": [
+        "g1",
+        "g2",
+        "g3"
+      ],
+      "rating": 10,
+      "id": 8
+    }
+  ]
+}
