@@ -1,5 +1,7 @@
 import './css/styles.css';
 
+//  ++++++++++++++++++++++++++   COUNTRIES         ++++++++++++++++++++++++++
+
 // const commentList = document.querySelector('.countries');
 
 // fetchCountries('sw').then(renderCountries).catch();
@@ -23,6 +25,8 @@ import './css/styles.css';
 //   });
 // }
 
+// ++++++++++++++++++++++++++   CRUD  ++++++++++++++++++++++++++
+
 const BASE_URL = 'http://localhost:3000';
 
 function fetchBooks() {
@@ -34,9 +38,9 @@ function fetchBookByID(id) {
 }
 
 // fetchBooks().then(console.log); // render function can be here
-fetchBookByID(3)
-  .then(console.log)
-  .catch(error => console.log(error));
+// fetchBookByID(3)
+//   .then(console.log)
+//   .catch(error => console.log(error));
 
 function addBook(book) {
   const options = {
@@ -70,7 +74,63 @@ function removeBook(id) {
   const options = {
     method: 'DELETE',
   };
-  return fetch(`${BASE_URL}/books/${id}`, options).then(res => res.json());
+  return fetch(`${BASE_URL}/books/${id}`, options);
 }
 
 // removeBook(9).catch(error => console.log(error));
+
+//  ++++++++++++++++++++++++++  async/await    ++++++++++++++++++++++++++
+
+function getFruit(name) {
+  const fruits = { apple: 'тиблочко', orange: 'ліпісіна', kiwi: 'ківі' };
+  return new Promise(resolve => setTimeout(() => resolve(fruits[name]), 1000));
+}
+
+async function makeSmoothie() {
+  try {
+    console.time('time');
+
+    const apple = getFruit('apple');
+    const orange = getFruit('orange');
+    const kiwi = getFruit('kiwi');
+
+    const fruits = await Promise.all([apple, orange, kiwi]);
+
+    console.timeEnd('time');
+
+    return fruits;
+  } catch (error) {
+    console.log(error.name, ': ', error.message);
+  }
+}
+
+makeSmoothie().then(fruits => console.log(fruits));
+
+// +++++++++++ practice
+
+async function addNewBook(book) {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(book),
+  };
+
+  const response = await fetch(`${BASE_URL}/books`, options);
+  const newBook = await response.json();
+  return newBook;
+}
+
+// addNewBook({ title: 'Book2', author: 'someontElse2', genres: ['g3', 'g4'], rating: 5 }).then(
+//   console.log,
+// );
+
+async function renderBook(newBook) {
+  try {
+    const book = await addNewBook(newBook);
+    console.log(book);
+  } catch (error) {
+    console.log(error.name, ': ', error.message);
+  }
+}
+
+renderBook(15);
