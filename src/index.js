@@ -1,30 +1,4 @@
 import './css/styles.css';
-
-//  ++++++++++++++++++++++++++   COUNTRIES         ++++++++++++++++++++++++++
-
-// const commentList = document.querySelector('.countries');
-
-// fetchCountries('sw').then(renderCountries).catch();
-
-// function fetchCountries(name) {
-//   return fetch(
-//     `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,languages`,
-//   ).then(response => {
-//     if (response.ok) {
-//       return response.json();
-//     }
-//     throw Error('Ой..');
-//   });
-// }
-
-// function renderCountries(countries) {
-//   const markup = countries.map(({ name: { official }, capital, population, languages }) => {
-//     console.log(
-//       `${official}, ${capital[0]}, ${population}, ${Object.values(languages).join(', ')}`,
-//     );
-//   });
-// }
-
 // ++++++++++++++++++++++++++   CRUD  ++++++++++++++++++++++++++
 
 const BASE_URL = 'http://localhost:3000';
@@ -134,3 +108,34 @@ async function renderBook(newBook) {
 }
 
 renderBook(15);
+
+// --------------------- TO DO LIST  ---------------------
+
+const add = document.querySelector('.add');
+add.addEventListener('submit', addTask);
+
+const tasks = document.querySelector('.tasks');
+
+let i = 0;
+
+function addTask(event) {
+  event.preventDefault();
+  const task = event.currentTarget.firstElementChild.value;
+  if (task === '' || task === ' ') {
+    return;
+  }
+  tasks.insertAdjacentHTML(
+    'afterbegin',
+    `<li class="text">${task}<button class="x-btn" type="button"> x </button></li>`,
+  );
+  document.querySelector('.x-btn').addEventListener('click', onClick);
+}
+
+function onClick(event) {
+  if (i > 0 && event.currentTarget.parentNode.classList.contains('red')) {
+    event.currentTarget.parentNode.remove();
+    return;
+  }
+  event.currentTarget.parentNode.classList.add('red');
+  i += 1;
+}

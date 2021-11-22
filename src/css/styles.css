@@ -11,3 +11,16 @@ body {
   color: #212121;
   line-height: 1.5;
 }
+
+.text {
+  padding: 5px;
+  display: block;
+}
+
+.x-btn {
+  margin: 5px;
+  padding: 5px;
+}
+.red {
+  text-decoration: line-through;
+}
