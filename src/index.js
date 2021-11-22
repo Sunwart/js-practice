@@ -116,8 +116,6 @@ add.addEventListener('submit', addTask);
 
 const tasks = document.querySelector('.tasks');
 
-// let i = 0;
-
 function addTask(event) {
   event.preventDefault();
   const task = event.currentTarget.firstElementChild.value;
@@ -132,7 +130,6 @@ function addTask(event) {
 }
 
 function onClick(event) {
-  // if (i > 0 && event.currentTarget.parentNode.classList.contains('red')) {
   if (event.currentTarget.parentNode.classList.contains('red')) {
     event.currentTarget.parentNode.remove();
     return;
